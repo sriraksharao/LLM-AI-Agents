@@ -4,3 +4,7 @@ What we do:
 2) Pass data to LLM
 3) Take result of one LLM and pass it on to another LLM
 4) Use a tool and save it to a file
+
+
+Create virtual env - python3 -m venv ai
+Activate - source ai/bin/activate
