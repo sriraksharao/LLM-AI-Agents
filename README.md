@@ -7,4 +7,5 @@ What we do:
 
 
 Create virtual env - python3 -m venv ai
+
 Activate - source ai/bin/activate
