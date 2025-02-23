@@ -30,6 +30,7 @@ query_engine = vector_index.as_query_engine(llm=llm)
 # result = query_engine.query("routes in api?")
 # print(result)
 
+# wrapping query engine in a tool that we can provide to ai agent
 tools = QueryEngineTool(
     query_engine=query_engine,
     metadata=ToolMetadata(
@@ -47,3 +48,19 @@ agent = ReActAgent.from_tools(tools, llm=code_llm, verbose=True, context="")
 # # )
 # result = llm.complete("hello")
 # print(result)
+
+# LLm number 2 here..codellama basicaly generates code
+code_llm=Ollama(model="codellama")
+
+
+
+
+
+
+
+
+
+
+
+
+
