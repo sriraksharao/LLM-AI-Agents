@@ -6,6 +6,9 @@ from llama_parse import LlamaParse
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, PromptTemplate
 from llama_index.core.embeddings import resolve_embed_model
 from dotenv import load_dotenv
+from llama_index.core.tools import QueryEngineTool, ToolMetadata
+from llama_index.core.agent import ReActAgent
+
 # parse pdf into some structured data
 # then convert it to Vectorestoreindex 
 # llm will utilise this db and extract just the info it needs to ans a specific query
@@ -24,9 +27,19 @@ embed_model = resolve_embed_model("local:BAAI/bge-m3")
 vector_index = VectorStoreIndex.from_documents(documents, embed_model=embed_model)
 query_engine = vector_index.as_query_engine(llm=llm)
 
-result = query_engine.query("routes in api?")
-print(result)
+# result = query_engine.query("routes in api?")
+# print(result)
 
+tools = QueryEngineTool(
+    query_engine=query_engine,
+    metadata=ToolMetadata(
+        name="api_documentation",
+        description="gives docuementation about code for an api"
+    ),
+)
+
+code_llm=Ollama(model="codellama")
+agent = ReActAgent.from_tools(tools, llm=code_llm, verbose=True, context="")
 
 # llm = Ollama(model="mistral", request_timeout=30.0)
 # # llm = Ollama(
