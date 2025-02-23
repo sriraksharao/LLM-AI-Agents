@@ -1,0 +1,9 @@
+(ai) (base) sriraksharajeshrao@srirakshas-MacBook-Air ai agent % python main.py
+Traceback (most recent call last):
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/main.py", line 4, in <module>
+    from llama_index.llms.ollama import Ollama
+ModuleNotFoundError: No module named 'llama_index.llms.ollama'
+
+pip install llama-index
+pip install llama-index-llms-ollama
+
