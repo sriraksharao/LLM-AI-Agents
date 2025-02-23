@@ -8,6 +8,8 @@ from llama_index.core.embeddings import resolve_embed_model
 from dotenv import load_dotenv
 from llama_index.core.tools import QueryEngineTool, ToolMetadata
 from llama_index.core.agent import ReActAgent
+from prompts import context
+
 
 # parse pdf into some structured data
 # then convert it to Vectorestoreindex 
@@ -31,16 +33,22 @@ query_engine = vector_index.as_query_engine(llm=llm)
 # print(result)
 
 # wrapping query engine in a tool that we can provide to ai agent
-tools = QueryEngineTool(
+tools = [QueryEngineTool(
     query_engine=query_engine,
     metadata=ToolMetadata(
         name="api_documentation",
         description="gives docuementation about code for an api"
     ),
 )
-
+]
+# LLm number 2 here..codellama basicaly generates code
 code_llm=Ollama(model="codellama")
-agent = ReActAgent.from_tools(tools, llm=code_llm, verbose=True, context="")
+agent = ReActAgent.from_tools(tools, llm=code_llm, verbose=True, context="context")
+
+while(prompt:=input("enter a prompt (q for quit)")) != "q":
+    result = agent.query(prompt)
+    print(result)
+
 
 # llm = Ollama(model="mistral", request_timeout=30.0)
 # # llm = Ollama(
@@ -50,7 +58,7 @@ agent = ReActAgent.from_tools(tools, llm=code_llm, verbose=True, context="")
 # print(result)
 
 # LLm number 2 here..codellama basicaly generates code
-code_llm=Ollama(model="codellama")
+
 
 
 
