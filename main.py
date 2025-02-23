@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from llama_index.core.tools import QueryEngineTool, ToolMetadata
 from llama_index.core.agent import ReActAgent
 from prompts import context
-
+from code_reader import code_reader
 
 # parse pdf into some structured data
 # then convert it to Vectorestoreindex 
@@ -39,7 +39,8 @@ tools = [QueryEngineTool(
         name="api_documentation",
         description="gives docuementation about code for an api"
     ),
-)
+),
+code_reader
 ]
 # LLm number 2 here..codellama basicaly generates code
 code_llm=Ollama(model="codellama")
