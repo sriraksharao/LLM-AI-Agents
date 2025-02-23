@@ -1,9 +1,28 @@
-(ai) (base) sriraksharajeshrao@srirakshas-MacBook-Air ai agent % python main.py
+1) (ai) (base) sriraksharajeshrao@srirakshas-MacBook-Air ai agent % python main.py
 Traceback (most recent call last):
   File "/Users/sriraksharajeshrao/Documents/codes/ai agent/main.py", line 4, in <module>
     from llama_index.llms.ollama import Ollama
 ModuleNotFoundError: No module named 'llama_index.llms.ollama'
 
-pip install llama-index
+Solved by - pip install llama-index
 pip install llama-index-llms-ollama
 
+
+2) (ai) (base) sriraksharajeshrao@srirakshas-MacBook-Air ai agent % python3 main.py
+Started parsing the file under job_id 41785ce3-43fb-447d-a7bb-beed221eee34
+Traceback (most recent call last):
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/embeddings/utils.py", line 95, in resolve_embed_model
+    from llama_index.embeddings.huggingface import (
+ModuleNotFoundError: No module named 'llama_index.embeddings.huggingface'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/main.py", line 23, in <module>
+    embed_model = resolve_embed_model("local:BAAI/bge-m3")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/embeddings/utils.py", line 114, in resolve_embed_model
+    raise ImportError(
+ImportError: `llama-index-embeddings-huggingface` package not found, please run `pip install llama-index-embeddings-huggingface`
+
+Solved by - pip install llama-index-embeddings-huggingface

@@ -5,12 +5,14 @@ from llama_index.llms.ollama import Ollama
 from llama_parse import LlamaParse
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, PromptTemplate
 from llama_index.core.embeddings import resolve_embed_model
-
+from dotenv import load_dotenv
 # parse pdf into some structured data
 # then convert it to Vectorestoreindex 
 # llm will utilise this db and extract just the info it needs to ans a specific query
 # vector embeddings take textual data and they embed iinto multi d space that allows us to query based on things like sentiment etc
 
+load_dotenv() # looks for .env file and loads variables and gives access to them
+llm = Ollama(model="mistral", request_timeout=30.0)
 parser = LlamaParse(result_type="markdown")
 # llama parse takes docs and push them to cloud will then be parsed and parsing will be returned to us
 
