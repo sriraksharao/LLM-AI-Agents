@@ -26,3 +26,215 @@ Traceback (most recent call last):
 ImportError: `llama-index-embeddings-huggingface` package not found, please run `pip install llama-index-embeddings-huggingface`
 
 Solved by - pip install llama-index-embeddings-huggingface
+
+
+3) (base) (ai) sriraksharajeshrao@srirakshas-MacBook-Air ai agent % python main.py
+Started parsing the file under job_id b37086df-0040-4302-a5d5-9667e214bf8c
+enter a prompt (q for quit)read test.py and give code
+> Running step f1d7b2c7-100c-4e6c-ae07-7f88671705dc. Step input: read test.py and give code
+Traceback (most recent call last):
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/main.py", line 50, in <module>
+    result = agent.query(prompt)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/instrumentation/dispatcher.py", line 322, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/base/base_query_engine.py", line 52, in query
+    query_result = self._query(str_or_query_bundle)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/instrumentation/dispatcher.py", line 322, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/callbacks/utils.py", line 41, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/base/agent/types.py", line 49, in _query
+    agent_response = self.chat(
+                     ^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/instrumentation/dispatcher.py", line 322, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/callbacks/utils.py", line 41, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/agent/runner/base.py", line 692, in chat
+    chat_response = self._chat(
+                    ^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/instrumentation/dispatcher.py", line 322, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/agent/runner/base.py", line 624, in _chat
+    cur_step_output = self._run_step(
+                      ^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/instrumentation/dispatcher.py", line 322, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/agent/runner/base.py", line 420, in _run_step
+    cur_step_output = self.agent_worker.run_step(step, task, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/instrumentation/dispatcher.py", line 322, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/callbacks/utils.py", line 41, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/agent/react/step.py", line 820, in run_step
+    return self._run_step(step, task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/agent/react/step.py", line 572, in _run_step
+    chat_response = self._llm.chat(input_chat)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/instrumentation/dispatcher.py", line 322, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/llms/callbacks.py", line 173, in wrapped_llm_chat
+    f_return_val = f(_self, messages, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/llms/ollama/base.py", line 321, in chat
+    response = self.client.chat(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/ollama/_client.py", line 333, in chat
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/ollama/_client.py", line 178, in _request
+    return cls(**self._request_raw(*args, **kwargs).json())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/ollama/_client.py", line 122, in _request_raw
+    raise ResponseError(e.response.text, e.response.status_code) from None
+ollama._types.ResponseError: model "codellama" not found, try pulling it first (status code: 404)
+
+
+solved by - ollama pull codellama
+
+
+4) enter a prompt (q for quit)read test.py and give some code
+> Running step ac1bfbe2-3477-481d-88ff-4550770f6f58. Step input: read test.py and give some code
+Traceback (most recent call last):
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 126, in read
+    with map_exceptions(exc_map):
+  File "/opt/anaconda3/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/main.py", line 50, in <module>
+    result = agent.query(prompt)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/instrumentation/dispatcher.py", line 322, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/base/base_query_engine.py", line 52, in query
+    query_result = self._query(str_or_query_bundle)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/instrumentation/dispatcher.py", line 322, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/callbacks/utils.py", line 41, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/base/agent/types.py", line 49, in _query
+    agent_response = self.chat(
+                     ^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/instrumentation/dispatcher.py", line 322, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/callbacks/utils.py", line 41, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/agent/runner/base.py", line 692, in chat
+    chat_response = self._chat(
+                    ^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/instrumentation/dispatcher.py", line 322, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/agent/runner/base.py", line 624, in _chat
+    cur_step_output = self._run_step(
+                      ^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/instrumentation/dispatcher.py", line 322, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/agent/runner/base.py", line 420, in _run_step
+    cur_step_output = self.agent_worker.run_step(step, task, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/instrumentation/dispatcher.py", line 322, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/callbacks/utils.py", line 41, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/agent/react/step.py", line 820, in run_step
+    return self._run_step(step, task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/agent/react/step.py", line 572, in _run_step
+    chat_response = self._llm.chat(input_chat)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/instrumentation/dispatcher.py", line 322, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/core/llms/callbacks.py", line 173, in wrapped_llm_chat
+    f_return_val = f(_self, messages, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/llama_index/llms/ollama/base.py", line 321, in chat
+    response = self.client.chat(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/ollama/_client.py", line 333, in chat
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/ollama/_client.py", line 178, in _request
+    return cls(**self._request_raw(*args, **kwargs).json())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/ollama/_client.py", line 118, in _request_raw
+    r = self._client.request(*args, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/anaconda3/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/Users/sriraksharajeshrao/Documents/codes/ai agent/ai/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout: timed out
+
+changed code_llm=Ollama(model="codellama") to code_llm=Ollama(model="codellama", request_timeout=60.0) (increase request time out if needed)
