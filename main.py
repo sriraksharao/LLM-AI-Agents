@@ -65,11 +65,23 @@ output_pipeline = QueryPipeline(chain = [json_prompt_template, llm])
 # will take the code_parser_template string and it will inject the end of that string the format of pedantic model (The CodeOutput class)
 
 while(prompt:=input("enter a prompt (q for quit)")) != "q":
-    result = agent.query(prompt)
-    # print(result)
-    next_result = output_pipeline.run(response=result)
-    print(next_result)
-    # something like assistant{"code": "...", "description":"...","filename":"..."} gets generated
+    retries = 0
+    while retries<3:
+        try:
+            result = agent.query(prompt)
+            # print(result)
+            next_result = output_pipeline.run(response=result)
+            print(next_result)
+            # something like assistant{"code": "...", "description":"...","filename":"..."} gets generated
+            cleaned_json = ast.literal_eval(str(next_result).replace("assistant",""))
+            print("code generated")
+            print(cleaned_json["code"])
+            print("\n\nDescription", cleaned_json["description"])
+            filename = cleaned_json["filename"]
+            break
+        except Exception as e:
+            retries += 1
+
 # llm = Ollama(model="mistral", request_timeout=30.0)
 # # llm = Ollama(
 # #     model = "mistral", request_timeout=30.0
