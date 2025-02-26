@@ -14,7 +14,7 @@ from pydantic import BaseModel
 from llama_index.core.output_parsers import PydanticOutputParser
 from llama_index.core.query_pipeline import QueryPipeline
 import ast
-
+import os
 
 # parse pdf into some structured data
 # then convert it to Vectorestoreindex 
@@ -74,13 +74,25 @@ while(prompt:=input("enter a prompt (q for quit)")) != "q":
             print(next_result)
             # something like assistant{"code": "...", "description":"...","filename":"..."} gets generated
             cleaned_json = ast.literal_eval(str(next_result).replace("assistant",""))
-            print("code generated")
-            print(cleaned_json["code"])
-            print("\n\nDescription", cleaned_json["description"])
-            filename = cleaned_json["filename"]
             break
         except Exception as e:
             retries += 1
+            print(f"Error occured, retry #{retries}",e)
+    if retries >= 3:
+        print("unable to process request, try again...")
+        continue
+    print("code generated")
+    print(cleaned_json["code"])
+    print("\n\nDescription", cleaned_json["description"])
+    filename = cleaned_json["filename"]
+
+    try:
+        with open(os.path.join("output", filename),"w") as f:
+            f.write(cleaned_json["code"])
+        print("saved file", filename)
+    except:
+        print("error saving file")
+    
 
 # llm = Ollama(model="mistral", request_timeout=30.0)
 # # llm = Ollama(
