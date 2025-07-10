@@ -1,6 +1,0 @@
-LlamaCloud and LlamaParse
-brings production grade context augmentation to llm and rag applications
-
-llamaparse parses complex docs with embedded objs like tables and figures. 
-
-Rag is only as good as data as in if data is not good and vector index is not good, we dont get good results
